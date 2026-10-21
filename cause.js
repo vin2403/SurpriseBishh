@@ -55,7 +55,8 @@ function createReasonCard(reason) {
     return card;
 }
 
-// Display new reason
+
+ // Display new reason
 function displayNewReason() {
     if (isTransitioning) return;
     isTransitioning = true;
@@ -63,13 +64,13 @@ function displayNewReason() {
     if (currentReasonIndex < reasons.length) {
         const card = createReasonCard(reasons[currentReasonIndex]);
         reasonsContainer.appendChild(card);
-        
+
         // Update counter
         reasonCounter.textContent = `Reason ${currentReasonIndex + 1} of ${reasons.length}`;
-        
+
         currentReasonIndex++;
 
-        // Check if we should transform the button
+        // Transform the button after the last reason
         if (currentReasonIndex === reasons.length) {
             gsap.to(shuffleButton, {
                 scale: 1.1,
@@ -78,40 +79,40 @@ function displayNewReason() {
                 onComplete: () => {
                     shuffleButton.textContent = "Enter Our Storylane 💫";
                     shuffleButton.classList.add('story-mode');
-                    shuffleButton.addEventListener('click', () => {
-                        gsap.to('body', {
-                            opacity: 0,
-                            duration: 1,
-                            onComplete: () => {
-                                window.location.href = 'last.html'; // Replace with the actual URL of the next page
-                            }
-                        });
-                    });
+                    shuffleButton.dataset.storyMode = 'true';
                 }
             });
         }
 
         // Create floating elements
         createFloatingElement();
-        
+
         setTimeout(() => {
             isTransitioning = false;
         }, 500);
-    } else {
-        // Handle navigation to new page or section
-        window.location.href = "#storylane";
-        // Or trigger your next page functionality
     }
 }
 
 // Initialize button click
 shuffleButton.addEventListener('click', () => {
+    if (shuffleButton.dataset.storyMode === 'true') {
+        gsap.to('body', {
+            opacity: 0,
+            duration: 1,
+            onComplete: () => {
+                window.location.href = 'last.html';
+            }
+        });
+        return;
+    }
+
     gsap.to(shuffleButton, {
         scale: 0.9,
         duration: 0.1,
         yoyo: true,
         repeat: 1
     });
+
     displayNewReason();
 });
 
@@ -151,5 +152,3 @@ document.addEventListener('mousemove', (e) => {
 // Create floating elements every 2 seconds
 setInterval(createFloatingElement, 2000);
 
-// Create initial floating elements
-setInterval(createFloatingElement, 2000);
