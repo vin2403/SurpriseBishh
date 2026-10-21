@@ -1,22 +1,22 @@
  // Reasons database
  const reasons = [
     { 
-        text: "You’re such a kind and wonderful person, and I feel lucky to share such a good bond with you. 💖", 
+        text: "You're my favourite notification, even when you're being annoying.\nYou're the kindestt and sweetestt person ik and I'm so glad to have bond with ya 😭💗", 
         emoji: "🌟",
         gif: "gif1.gif"
     },
     { 
-        text: "May your day be filled with love, laughter, and endless joy. 🌸 ", 
+        text: "Life really said here, have a bestie who is equal parts chaos and comfort just like another half.", 
         emoji: "💗",
         gif: "gif2.gif"
     },
     { 
-        text: "Wishing you success, happiness, and everything your heart desires. ✨ ", 
+        text: "You're always stuck with me ma'am, til the end. Lifetime subscription. No cancellations. 💋", 
         emoji: "💕",
         gif: "gif1.gif"
     },
     { 
-        text: "Stay the amazing girl you are—always spreading positivity around. Have the happiest year ahead! 🥳 ", 
+        text: "Happiestt Birthdayy to my kuchi puchi once again!\nStay the amazing girl you are always spreading positivity around. Have the happiest day n year ahead! 🥳 ", 
         emoji: "🌟",
         gif: "gif2.gif"
     }
@@ -142,7 +142,6 @@ document.addEventListener('mousemove', (e) => {
         y: e.clientY - 15,
         duration: 0.2
     });
-});
 
 // Create initial floating elements
 setInterval(createFloatingElement, 2000);
